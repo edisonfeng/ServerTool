@@ -11,13 +11,13 @@ except Exception, e:
 cursor = conn.cursor()
 
 #插入单条数据
-sql = "insert into staffinfo(i_staff_no,v_staff_name) values (%d, '%s')"%(333,"ccc")
+sql = "insert into user_info(i_id,v_name) values (%d, '%s')"%(333,"ccc")
 try:
     cursor.execute(sql)
 except Exception, e:
     print e
 #插入多条数据
-sql = "insert into staffinfo(i_staff_no,v_staff_name) values (%s, %s)"#此处都是%s类型
+sql = "insert into user_info(i_id,v_name) values (%s, %s)"#此处都是%s类型
 val = ((444,"ddd"),(555,"eee"), (666,"fff"))
 try:
     cursor.executemany(sql, val)
@@ -25,7 +25,7 @@ except Exception, e:
     print e
 
 #查询数据
-sql= "select * from staffinfo order by i_staff_no"
+sql= "select * from user_info order by i_id"
 cursor.execute(sql)
 alldata = cursor.fetchall()
 # 如果有数据返回，就循环输出, alldata是有个二维的列表
@@ -35,5 +35,6 @@ if alldata:
 
 cursor.close()
 conn.close()
+    
     
 
